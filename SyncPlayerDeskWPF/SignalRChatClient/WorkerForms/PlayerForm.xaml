@@ -1,0 +1,114 @@
+﻿<Window x:Class="SyncPlayer.PlayerForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SyncPlayer"
+        mc:Ignorable="d"
+        Title="" Height="450" Width="1030" MinHeight="450" MinWidth="1030" MaxHeight="450" MaxWidth="1030" Icon="corgi.png">
+    <Grid Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Height="200" Margin="481,54,341.4,0" VerticalAlignment="Top" Source="corgi2.png"/>
+        <Label Content="Corginger" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="470,255,0,0" FontFamily="Comic Sans MS" FontSize="48"/>
+        <Button x:Name="sendButton" Content="Send Message" HorizontalAlignment="Left" Margin="174,373,0,0" VerticalAlignment="Top" Width="96" Click="sendButton_Click" Height="23" FontFamily="Century Gothic" Background="#FFFFA31A" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBox x:Name="messageTextBox" HorizontalAlignment="Left" Height="23" Margin="10,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157" RenderTransformOrigin="0.456,2.975" KeyDown="MessageTextBox_KeyDown" FontFamily="Century Gothic">
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#7F778899"/>
+            </TextBox.BorderBrush>
+        </TextBox>
+        <ListBox x:Name="messagesList" HorizontalAlignment="Left" Height="299" Margin="10,45,0,0" VerticalAlignment="Top" Width="260" RenderTransformOrigin="-0.304,0.109" BorderThickness="1" FontFamily="Century Gothic">
+            <ListBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </ListBox.Resources>
+            <ListBox.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </ListBox.BorderBrush>
+        </ListBox>
+        <Label Content="Chat" HorizontalAlignment="Left" Height="26" Margin="10,9,0,0" VerticalAlignment="Top" Width="58" FontFamily="Century Gothic"/>
+        <ListBox x:Name="UserListLB" Height="170" Margin="877,0,8,205" VerticalAlignment="Bottom" RenderTransformOrigin="-0.304,0.109" BorderThickness="1" FontFamily="Century Gothic">
+            <ListBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </ListBox.Resources>
+            <ListBox.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </ListBox.BorderBrush>
+        </ListBox>
+        <Label Content="Users" HorizontalAlignment="Left" Height="26" Margin="970,6,0,0" VerticalAlignment="Top" Width="41" FontFamily="Century Gothic"/>
+        <Button x:Name="DisconnectBTN" Click="DisconnectBTN_Click" Content="Leave Room" HorizontalAlignment="Left" Margin="885,10,0,0" VerticalAlignment="Top" Width="80" Height="22" FontFamily="Century Gothic" Background="#FFFFA31A" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <MediaElement Source="" LoadedBehavior="Manual" x:Name="mePlayer" Margin="277,47,154.4,74" />
+        <StackPanel HorizontalAlignment="Left" Width="274">
+            <WrapPanel HorizontalAlignment="Center"/>
+        </StackPanel>
+        <Button x:Name="btnPause" Visibility="Hidden" Margin="277,0,0,10" Click="btnPause_Click" Content="Pause" HorizontalAlignment="Left" Width="44" Height="29" VerticalAlignment="Bottom" Background="#FFFFA31A" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btnStop" Visibility="Hidden" Click="btnStop_Click" RenderTransformOrigin="0.613,0.818" Content="Stop" Margin="326,0,0,10" Height="29" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="45" Background="#FFFFA31A" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btnPlay" Visibility="Hidden" Click="btnPlay_Click" Content="Play" Margin="376,0,0,10" RenderTransformOrigin="0.016,0.528" HorizontalAlignment="Left" Width="46" Height="29" VerticalAlignment="Bottom" Background="#FFFFA31A" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="NextMedia" Visibility="Hidden" Click="NextMedia_Click" Content="Next Media" Margin="427,0,0,10" RenderTransformOrigin="0.016,0.528" HorizontalAlignment="Left" Width="75" Height="29" VerticalAlignment="Bottom" Background="#FFFFA31A" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ResetPlaylistBTN" Visibility="Hidden" Content="Reset playlist" HorizontalAlignment="Left" Margin="507,0,0,10" Width="81" Click="ResetPlaylistBTN_Click" Height="28" VerticalAlignment="Bottom" Background="#FFFFA31A" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label x:Name="lblStatus" Content="Not playing..." HorizontalContentAlignment="Center" Margin="0,351,587,0" HorizontalAlignment="Right" Width="155" Height="29" VerticalAlignment="Top" FontFamily="Century Gothic" />
+        <Slider x:Name="PlayerVolume"  Value="0.5" HorizontalAlignment="Left" Margin="758,358,0,0" VerticalAlignment="Top" Width="113" Minimum="0" Maximum="1" Thumb.DragCompleted="PlayerVolume_DragCompleted" Height="22"/>
+        <ListBox x:Name="PlayListLB" Margin="0,240,6,10" RenderTransformOrigin="-0.304,0.109" BorderThickness="1" HorizontalAlignment="Right" Width="138" FontFamily="Century Gothic">
+            <ListBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </ListBox.Resources>
+            <ListBox.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </ListBox.BorderBrush>
+        </ListBox>
+        <Label Content="Play List" HorizontalAlignment="Left" Height="26" Margin="953,214,0,0" VerticalAlignment="Top" Width="58" FontFamily="Century Gothic"/>
+    </Grid>
+</Window>
